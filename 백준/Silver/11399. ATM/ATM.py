@@ -1,8 +1,8 @@
-n = int(input())
-time = list(map(int, input().split()))
-time.sort()
-result = time[0]
-for i in range(1, n):
-  time[i] += time[i - 1]
-  result += time[i]
+N = int(input())
+data = list(map(int, input().split()))
+data.sort()
+result = data[0]
+for i in range(1, N):
+    data[i] += data[i - 1]
+    result += data[i]
 print(result)
