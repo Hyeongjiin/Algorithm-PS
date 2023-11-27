@@ -4,7 +4,9 @@ n = int(input())
 card = []
 for i in range(n):
   num = int(input())
-  heapq.heappush(card, num)
+  card.append(num)
+
+card.sort()
 
 result = 0
 while len(card) > 1:
