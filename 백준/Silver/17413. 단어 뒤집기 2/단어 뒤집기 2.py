@@ -3,29 +3,15 @@ import sys
 
 input = sys.stdin.readline
 
-S = input()
-q = []
-flag = 0
+S = input().rstrip()
+S = S.replace('<', 'X<').replace('>', '>X').split('X')
+result = ""
 for i in S:
-  if i == '<':
-    flag += 1
-    while q:
-      print(q.pop(), end = "")
-    print("", end = "")
-    
-  if flag == 0 and i != " " and i != "\n":
-    q.append(i)
-  if flag == 0 and i == " ":
-    while q:
-      print(q.pop(), end = "")
-    print(" ", end = "")
+  if '<' in i:
+    result += i
+  else:
+    words = i.split(' ')
+    words = [word[::-1] for word in words]
+    result += ' '.join(words)
 
-  if i == '>':
-    flag -= 1
-    print(i, end = "")
-    
-  if flag == 1:
-    print(i, end = "")
-
-while q:
-  print(q.pop(), end = "")
+print(result)
