@@ -1,37 +1,16 @@
-from collections import deque
 import sys
+from collections import deque
 
-input = sys.stdin.readline
+N = int(sys.stdin.readline())
+queue = deque(enumerate(map(int, sys.stdin.readline().split()), start=1))
+a = []
 
-N = int(input())
-balloons = list(map(int, input().split()))
-q = deque()
-for i in range(N):
-  q.append((balloons[i], i + 1))
+while queue:
+  idx, num = queue.popleft()
+  a.append(str(idx))
+  if num > 0:
+    queue.rotate(-(num-1))
+  else:
+    queue.rotate(-num)
 
-result = []
-balloon = q.popleft()
-move = balloon[0]
-result.append(balloon[1])
-N -= 1
-
-while q:
-  if move > 0:
-    move %= N
-    for i in range(move):
-      q.append(q.popleft())
-    balloon = q.pop()
-    move = balloon[0]
-    result.append(balloon[1])
-  elif move < 0:
-    move *= -1
-    move %= N
-    for i in range(move):
-      q.appendleft(q.pop())
-    balloon = q.popleft()
-    move = balloon[0]
-    result.append(balloon[1])
-  N -= 1
-  
-for i in result:
-  print(i, end = " ")
+print(' '.join(a))
