@@ -3,9 +3,7 @@ import sys
 input = sys.stdin.readline
 
 N, K = map(int, input().split())
-q = deque()
-for i in range(1, N + 1):
-  q.append(str(i))
+q = deque([str(i) for i in range(1, N+1)])
 
 result = []
 while q:
