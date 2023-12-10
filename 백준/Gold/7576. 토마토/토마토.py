@@ -1,14 +1,18 @@
 from collections import deque
 import sys
 
-def bfs(tomatoes, visited):
+def bfs():
   day = 0
   q = deque()
+  cnt = 0
+  maxi = 0
   for i in range(N):
     for j in range(M):
       if tomatoes[i][j] == 1:
         q.append((i, j, day))
         visited[i][j] = True
+      elif tomatoes[i][j] == 0:
+        cnt += 1
   while q:
     current = q.popleft()
     x = current[0]
@@ -16,6 +20,8 @@ def bfs(tomatoes, visited):
     day = current[2]
     day += 1
     tomatoes[x][y] = day
+    if maxi < day:
+      maxi = day
     for move in moves:
       nx = x + move[0]
       ny = y + move[1]
@@ -26,8 +32,13 @@ def bfs(tomatoes, visited):
       if tomatoes[nx][ny] >= 2 and tomatoes[nx][ny] < day:
         continue
       if visited[nx][ny] == False:
+        cnt -= 1
         visited[nx][ny] = True
         q.append((nx, ny, day))
+  if cnt == 0:
+    return True, maxi - 1
+  else:
+    return False, - 1
 
 input = sys.stdin.readline
 
@@ -38,18 +49,9 @@ for i in range(N):
   tomatoes.append(list(map(int, input().split())))
 
 visited = [[False] * M for _ in range(N)]
-bfs(tomatoes, visited)
-
-result = False
-maxi = 0
-
-for i in range(N):
-  for j in range(M):
-    if tomatoes[i][j] == 0:
-      result = True
-    maxi = max(maxi, tomatoes[i][j])
+result, maxi = bfs()
     
 if result == True:
-  print(-1)
+  print(maxi)
 else:
-  print(maxi - 1)
+  print(maxi)
