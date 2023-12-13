@@ -27,11 +27,7 @@ def bfs():
       ny = y + move[1]
       if nx < 0 or ny < 0 or nx > N - 1 or ny > M - 1:
         continue
-      if tomatoes[nx][ny] == -1 or tomatoes[nx][ny] == 1:
-        continue
-      if tomatoes[nx][ny] >= 2 and tomatoes[nx][ny] < day:
-        continue
-      if visited[nx][ny] == False:
+      if visited[nx][ny] == False and tomatoes[nx][ny] == 0:
         cnt -= 1
         visited[nx][ny] = True
         q.append((nx, ny, day))
@@ -50,7 +46,7 @@ for i in range(N):
 
 visited = [[False] * M for _ in range(N)]
 result, maxi = bfs()
-    
+
 if result == True:
   print(maxi)
 else:
