@@ -2,22 +2,20 @@ from collections import deque
 import sys
 
 def bfs():
-  day = 0
   q = deque()
   cnt = 0
   maxi = 0
   for i in range(N):
     for j in range(M):
       if tomatoes[i][j] == 1:
-        q.append((i, j, day))
+        q.append((i, j))
       elif tomatoes[i][j] == 0:
         cnt += 1
   while q:
     current = q.popleft()
     x = current[0]
     y = current[1]
-    day = current[2]
-    day += 1
+    day = tomatoes[x][y]
     if maxi < day:
       maxi = day
     for move in moves:
@@ -27,8 +25,8 @@ def bfs():
         continue
       if tomatoes[nx][ny] == 0:
         cnt -= 1
-        tomatoes[nx][ny] = day
-        q.append((nx, ny, day))
+        tomatoes[nx][ny] = day + 1
+        q.append((nx, ny))
   if cnt == 0:
     return True, maxi - 1
   else:
