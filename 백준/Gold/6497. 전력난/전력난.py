@@ -2,9 +2,9 @@ import sys
 input = sys.stdin.readline
 
 def find_parent(parent, x):
-  while parent[x] != x:
-    x = parent[x]
-  return x
+  if parent[x] != x:
+    parent[x] = find_parent(parent, parent[x])
+  return parent[x]
 
 def union_parent(parent, x, y):
   x = find_parent(parent, x)
