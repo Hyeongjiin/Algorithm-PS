@@ -36,3 +36,4 @@ while True:
       union_parent(parent, data[1], data[2])
   
   print(total - result)
+  
