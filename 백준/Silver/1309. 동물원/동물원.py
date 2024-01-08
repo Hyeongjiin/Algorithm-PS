@@ -2,14 +2,16 @@ import sys
 input = sys.stdin.readline
 
 N = int(input())
-empty = 1
-fill = 2
-result = empty + fill
-for i in range(N - 1):
-  nempty = empty + fill
-  nfill = empty * 2 + fill
-  empty = nempty
-  fill = nfill
-  result = (empty + fill) % 9901 
-
-print(result)
+if N == 1:
+  print(3)
+elif N == 2:
+  print(7)
+else:
+  dp = [0] * (N + 1)
+  dp[1] = 3
+  dp[2] = 7
+  for i in range(3, N + 1):
+    dp[i] = (dp[i - 2] + dp[i - 1] * 2) % 9901
+  
+  print(dp[N])
+  
