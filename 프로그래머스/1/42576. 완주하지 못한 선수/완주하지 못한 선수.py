@@ -1,13 +1,18 @@
 def solution(participant, completion):
+    members = {}
     answer = ''
-    participant.sort()
-    completion.sort()
-    while completion:
-        par = participant.pop()
-        com = completion.pop()
-        if par != com:
-            answer = par
+    for i in completion:
+        if i not in members:
+            members[i] = 1
+        else:
+            members[i] += 1
+    for i in participant:
+        if i not in members:
+            answer = i
             break
-    if answer == '':
-        answer = participant.pop()
+        else:
+            members[i] -= 1
+            if members[i] == -1:
+                answer = i
+                break
     return answer
