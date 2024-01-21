@@ -8,7 +8,6 @@ def solution(progresses, speeds):
         q.append(days)
     start = q[0]
     count = 0
-    print(q)
     while q:
         compare = q.popleft()
         if compare <= start:
