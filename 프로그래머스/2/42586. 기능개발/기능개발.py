@@ -16,6 +16,5 @@ def solution(progresses, speeds):
             start = compare
             answer.append(count)
             count = 1
-    if count != 0:
-        answer.append(count)
+    answer.append(count)
     return answer
