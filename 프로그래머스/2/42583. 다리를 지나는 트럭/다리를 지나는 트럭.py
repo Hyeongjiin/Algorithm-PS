@@ -19,15 +19,10 @@ def solution(bridge_length, weight, truck_weights):
             cur_weight -= end_truck[0]
             plus = bridge_length - (time - end_truck[1])
             time += plus
-        print(cur_road)
-        print(time)
     if cur_road:
         end_truck = cur_road.pop()
         plus = bridge_length - (time - end_truck[1])
         time += plus
-        print(cur_road)
-        print(time)
-            
-    
+
     answer= time + 1
     return answer
