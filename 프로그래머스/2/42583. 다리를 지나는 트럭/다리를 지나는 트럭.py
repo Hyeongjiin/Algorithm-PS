@@ -7,7 +7,7 @@ def solution(bridge_length, weight, truck_weights):
     time = 0
     
     while truck_weights:
-        if cur_weight + truck_weights[0] <= weight and len(cur_road) < bridge_length:
+        if cur_weight + truck_weights[0] <= weight:
             truck = truck_weights.popleft()
             cur_weight += truck
             cur_road.append((truck, time))
