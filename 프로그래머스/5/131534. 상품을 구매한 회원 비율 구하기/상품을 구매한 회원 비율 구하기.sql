@@ -1,5 +1,3 @@
--- 2021년에 가입한 전체 회원들 중 상품을 구매한 회원 수와 구매한 회원 비율
--- 년, 월 별로 출력 
 SELECT YEAR, MONTH, COUNT(*) AS PUCHASED_USERS, ROUND(COUNT(*) / (
     SELECT COUNT(*)
     FROM USER_INFO
@@ -13,6 +11,3 @@ FROM (
 ) AS C
 GROUP BY YEAR, MONTH
 ORDER BY YEAR, MONTH 
-
-
--- (SELECT COUNT(*) FROM USER_INFO WHERE YEAR(JOINED) = 2021)
