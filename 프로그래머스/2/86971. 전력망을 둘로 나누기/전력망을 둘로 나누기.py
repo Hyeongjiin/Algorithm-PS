@@ -6,7 +6,7 @@ def solution(n, wires):
     for wire in wires:
         graph[wire[0]].append(wire[1])
         graph[wire[1]].append(wire[0])
-    min_diff = 100000000
+    min_diff = int(10e9)
     for i in range(1, n + 1):
         for j in range(1, n + 1):
             if j in graph[i]:
