@@ -13,7 +13,6 @@ def solution(jobs):
             req = jobs.popleft()
             heapq.heappush(q, (req[1], req[0]))
         if q:
-            print(q)
             cur_job = heapq.heappop(q)
             req_time += cur_job[0] + cur_time - cur_job[1]
             cur_time += cur_job[0]
