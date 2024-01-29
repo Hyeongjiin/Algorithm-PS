@@ -5,7 +5,6 @@ def solution(operations):
     min_q = []
     used = [0] * len(operations)
     for idx, operation in enumerate(operations):
-        print(operation, idx)
         operation = operation.split(' ')
         operator = operation[0]
         num = int(operation[1])
