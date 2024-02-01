@@ -4,12 +4,12 @@ def solution(origin):
     result = list(set(sequence(word)))
     result.sort()
     answer = 0
+    print(result)
     for i in range(len(result)):
         if result[i] == origin:
             answer = i + 1
             break
     return answer
-
 
 def sequence(data):
     def backtrack(curr, length):
