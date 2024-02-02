@@ -1,7 +1,7 @@
 def solution(n, times):
     start = 1
     end = max(times) * n
-    answer = int(10e12)
+    answer = int(10e19)
     while start <= end:
         mid = (start + end) // 2
         count = 0
