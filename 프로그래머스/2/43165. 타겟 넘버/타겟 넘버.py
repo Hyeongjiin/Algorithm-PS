@@ -6,8 +6,6 @@ def solution(numbers, target):
     answer = 0
     q = deque()
     length = len(numbers) - 1
-    global answer
-    answer = 0
     total = 0
     q.append((total + numbers[0], 0))
     q.append((total - numbers[0], 0))
