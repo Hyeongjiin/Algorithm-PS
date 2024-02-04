@@ -17,12 +17,11 @@ def solution(tickets):
         val.sort()
     
     length = len(tickets)
-    count = 0
-    dfs("ICN", count, ["ICN"], length)
+    dfs("ICN", ["ICN"], length)
     return answer[0]
 
-def dfs(start, count, path, length):
-    if count == length:
+def dfs(start, path, length):
+    if len(path) == length + 1:
         answer.append(path)
         print(path)
         return 
@@ -33,7 +32,7 @@ def dfs(start, count, path, length):
     for i in range(len(ways[start])):
         if visited[start][i] == 0:
             visited[start][i] = 1
-            dfs(ways[start][i], count + 1, path + [ways[start][i]], length)
+            dfs(ways[start][i], path + [ways[start][i]], length)
             visited[start][i] = 0
             
     
