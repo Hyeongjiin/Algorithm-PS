@@ -1,7 +1,6 @@
 from collections import deque
 
 def solution(n, edge):
-    answer = 0
     graph = [[] for _ in range(n + 1)]
     visited = [0] * (n + 1)
     visited[1] = -1
@@ -9,10 +8,7 @@ def solution(n, edge):
         graph[vertex[0]].append(vertex[1])
         graph[vertex[1]].append(vertex[0])
     bfs(1, graph, visited)
-    max_count = max(visited)
-    for i in visited:
-        if i == max_count:
-            answer += 1
+    answer = visited.count(max(visited))
     return answer
 
 def bfs(start, graph, visited):
