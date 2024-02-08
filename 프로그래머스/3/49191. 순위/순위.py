@@ -1,25 +1,27 @@
 def solution(n, results):
-    answer = 0
+    if n == 1:
+        return 1
     INF = int(1e9)
-    graph = [[INF] * (n + 1) for _ in range(n + 1)]
-    for i in range(1, n + 1):
-        graph[i][i] = 0
-    for i in results:
-        graph[i[1]][i[0]] = 1
-    for i in range(1, n + 1):
-        for j in range(1, n + 1):
-            for k in range(1, n + 1):
-                if graph[j][i] + graph[i][k] == 2:
-                    graph[j][k] = 1
-    count = [0] * (n + 1)
+    distances = [[INF] * (n + 1) for _ in range(n + 1)]
+    for i in range(n + 1):
+        distances[i][i] = 0
+    for result in results:
+        distances[result[1]][result[0]] = 1
+    for k in range(1, n + 1):
+        for i in range(1, n + 1):
+            for j in range(1, n + 1):
+                distances[i][j] = min(distances[i][j], distances[i][k] + distances[k][j])
+                
+    for distance in distances:
+        print(distance)
+    visited = [0] * (n + 1)
     for i in range(1, n + 1):
         for j in range(1, n + 1):
             if i == j:
                 continue
-            if graph[i][j] == 1:
-                count[i] += 1
-                count[j] += 1
-    for i in count:
-        if i == n - 1:
-            answer += 1
+            if distances[i][j] > 0 and distances[i][j] < INF:
+                visited[i] += 1
+                visited[j] += 1
+    print(visited)
+    answer = visited.count(n - 1)
     return answer

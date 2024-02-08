@@ -1,10 +1,10 @@
 # [level 3] 순위 - 49191 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/49191) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/49191#) 
 
 ### 성능 요약
 
-메모리: 10.7 MB, 시간: 108.03 ms
+메모리: 10.7 MB, 시간: 310.83 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 2월 4일 17:51:57
+2024년 2월 4일 17:54:25
 
 ### 문제 설명
 
