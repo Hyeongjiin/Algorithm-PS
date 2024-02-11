@@ -1,33 +1,30 @@
 from collections import deque
 import sys
 
-def bfs(graph, visited, R):
-  q = deque([R])
-  count = 1
-  visited[R] = count
-  count += 1
-  while q:
-    current = q.popleft()
-    for i in graph[current]:
-      if visited[i] == 0:
-        visited[i] = count
-        count += 1
-        q.append(i)
-
 input = sys.stdin.readline
 
 N, M, R = map(int, input().split())
 graph = [[] for _ in range(N + 1)]
-for _ in range(M):
-  start, end = map(int, input().split())
-  graph[start].append(end)
-  graph[end].append(start)
+for i in range(M):
+  u, v = map(int, input().split())
+  graph[u].append(v)
+  graph[v].append(u)
 
-for i in range(1, N + 1):
-  graph[i].sort()
+for i in graph:
+  i.sort()
 
+count = 1
 visited = [0] * (N + 1)
-bfs(graph, visited, R)
+visited[R] = count
+q = deque()
+q.append((R, count))
+while q:
+  cur_node, cur_count = q.popleft()
+  for nxt_node in graph[cur_node]:
+    if visited[nxt_node] == 0:
+      count += 1
+      q.append((nxt_node, count))
+      visited[nxt_node] = count
 
 for i in range(1, N + 1):
   print(visited[i])
