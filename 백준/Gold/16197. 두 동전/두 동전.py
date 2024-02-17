@@ -36,7 +36,6 @@ for _ in range(N):
   board.append(list(input().rstrip()))
 
 moves = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-visited = {}
 coin = []
 for i in range(N):
   for j in range(M):
