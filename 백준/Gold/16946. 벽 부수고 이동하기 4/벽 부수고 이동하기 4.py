@@ -6,7 +6,6 @@ input = sys.stdin.readline
 def bfs(x, y, mark):
   q = deque()
   q.append((x, y))
-  visited[x][y] = True
   data[x][y] = mark
   count = 1
   while q:
@@ -16,10 +15,7 @@ def bfs(x, y, mark):
       ny = cur_y + move[1]
       if nx < 0 or nx > N - 1 or ny < 0 or ny > M - 1:
         continue
-      if visited[nx][ny] == True:
-        continue
       if data[nx][ny] == 0:
-        visited[nx][ny] = True
         data[nx][ny] = mark
         count += 1
         q.append((nx, ny))
@@ -47,7 +43,6 @@ for _ in range(N):
   data.append(list(map(int, input().rstrip())))
 
 moves = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-visited = [[False] * M for _ in range(N)]
 record = {}
 count = 2
 
