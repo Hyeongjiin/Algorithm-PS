@@ -1,15 +1,25 @@
 import sys
 
 input = sys.stdin.readline
-INF = int(1e20)
 N, atk = map(int, input().split())
+hp = 0
 dungeon = []
+atk_c = atk
 for _ in range(N):
-  dungeon.append(list(map(int, input().split())))
+  kind, dataF, dataS = map(int, input().split())
+  dungeon.append([kind, dataF, dataS])
+  if kind == 1:
+    if dataS % atk_c == 0:
+      attackTime = dataS // atk_c - 1
+    else:
+      attackTime = dataS // atk_c
+    hp += attackTime * dataF
+  elif kind == 2:
+    atk_c += dataF
 
 start_hp = 0
-end_hp = INF
-ans_hp = INF + 1
+end_hp = hp * 2
+ans_hp = hp * 2 + 1
 
 while start_hp <= end_hp:
   mid_hp = (start_hp + end_hp) // 2
