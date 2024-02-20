@@ -1,11 +1,16 @@
 import sys
+
 input = sys.stdin.readline
+INF = int(1e9)
+
 N = int(input())
-data = [0] * (N + 1)
-for i in range(2, N + 1):
-    data[i] = data[i - 1] + 1
-    if i % 2 == 0:
-        data[i] = min(data[i], data[i // 2] + 1)
-    if i % 3 == 0:
-        data[i] = min(data[i], data[i // 3] + 1)
-print(data[N])
+dp = [INF] * (N + 1)
+dp[N] = 0
+for i in range(N, 0, -1):
+  if i % 3 == 0:
+    dp[i // 3] = min(dp[i // 3], dp[i] + 1)
+  if i % 2 == 0:
+    dp[i // 2] = min(dp[i // 2], dp[i] + 1)
+  dp[i - 1] = min(dp[i - 1], dp[i] + 1)
+
+print(dp[1])
