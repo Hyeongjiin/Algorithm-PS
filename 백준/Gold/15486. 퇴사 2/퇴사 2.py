@@ -10,9 +10,12 @@ for i in range(1, N + 1):
   T, P = map(int, input().split())
   data.append((i, T, P))
 
+answer = 0
+
 for i in range(1, N + 1):
   dp[i] = max(dp[i], dp[i - 1])
   if i + data[i][1] <= N + 1:
     dp[i + data[i][1]] = max(dp[i + data[i][1]], dp[i] + data[i][2])
-
-print(max(dp))
+  answer = max(answer, dp[i])
+answer = max(answer, dp[N + 1])
+print(answer)
